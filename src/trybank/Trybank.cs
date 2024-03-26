@@ -21,10 +21,23 @@ public class TrybankLib
         Bank = new int[maxAccounts, 4];
     }
 
-    // 1. Construa a funcionalidade de cadastrar novas contas.
+    // 1. Construa a funcionalidade de cadastrar novas contas
     public void RegisterAccount(int number, int agency, int pass)
     {
-        throw new NotImplementedException();
+        for (int i = 0; i < maxAccounts; i++)
+        {
+            if (Bank[i, 0] == number && Bank[i, 1] == agency)
+            {
+                throw new ArgumentException("A conta já está sendo usada!");
+            }
+        }
+
+        Bank[registeredAccounts, 0] = number;
+        Bank[registeredAccounts, 1] = agency;
+        Bank[registeredAccounts, 2] = pass;
+        Bank[registeredAccounts, 3] = 0;
+
+        registeredAccounts++;
     }
 
     // 2. Construa a funcionalidade de fazer Login
